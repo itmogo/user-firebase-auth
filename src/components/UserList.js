@@ -9,7 +9,11 @@ function UserList(props) {
          we display a UserItem component. We also pass the user as a prop
          to UserItem so that we can display it */}
       {props.users.map((user) => (
-        <UserItem user={user} />
+        <UserItem user={user} 
+
+        
+        
+        />
       ))}
     </div>
   );

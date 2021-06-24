@@ -5,22 +5,23 @@ form{
 
 item_down{
         margin-top: 25px;
+        
+}
+
+.action{
+    margin-top: 10px;
 }
 
 label{ 
     font-size: bold;
     padding: 10px;
-    color: #2b2b2b;
-    
-    
+    color: #2b2b2b;     
 }
 
 .down{
-
     display:flex;
     align-items: center;
-    cursor: pointer;
-    
+    cursor: pointer;   
 }
 
 .editbtn{

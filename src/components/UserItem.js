@@ -32,11 +32,11 @@ function UserItem(props) {
       </div>
       
       <div className="col-md-3">
-       <p className="col-md-3"><b>Action</b>
+       <p className="col-md-3 "><b>Action</b>
        <div className="down">
         <Button
          variant="success btn-xs"
-          className="editbtn" 
+          className="editbtn action" 
           onClick={showModal}
           >
           Update</Button>
@@ -50,7 +50,7 @@ function UserItem(props) {
             <EditUserForm user={props.user} hideModal={hideModal} />
           </Modal.Body>
         </Modal>
-        <Button variant="danger btn-xs" 
+        <Button variant="danger btn-xs" className="action"
           onClick={() => {
             props.deleteUserAction(props.user.id);
           }} >
