@@ -1,7 +1,8 @@
 import React from 'react';
 import UserItem from './UserItem';
 import { connect } from 'react-redux';
-import { getAllUsers } from '../actions/userActions';
+
+
 //this component displays all the users we have in our users state from App.js
 function UserList(props) {
   
@@ -23,6 +24,5 @@ function mapStateToProps(state) {
     users: state.users,
   };
 }
-
 
 export default connect(mapStateToProps)(UserList);
