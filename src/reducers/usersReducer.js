@@ -27,6 +27,9 @@ export default function (state = initalState, action) {
         return user;
       });
       return { users: usersAfterUpdate };
+      // to get all users display on UI from firestore db
+      case 'SET_ALL_USERS':
+        return {users: action.payload};
     default:
       return state;
   }
