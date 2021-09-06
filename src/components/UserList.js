@@ -1,13 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import UserItem from './UserItem';
 import { connect } from 'react-redux';
 import { getAllUsers } from '../actions/userActions';
 //this component displays all the users we have in our users state from App.js
 function UserList(props) {
-  useEffect(() => {
-    props.getAllUsers();
-  }, []);
-
+  
   return (
     <div>
       {/* we loop through all the users and for every user,
@@ -27,8 +24,5 @@ function mapStateToProps(state) {
   };
 }
 
-const mapDispatchToProps = {
-  getAllUsers,
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserList);
+export default connect(mapStateToProps)(UserList);

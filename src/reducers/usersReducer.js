@@ -3,9 +3,9 @@ const initalState = { users: [] };
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (state = initalState, action) {
   switch (action.type) {
-    case 'ADD_ALL_USERS':
-      let users = action.payload;
-      return {users: users};
+    //case 'ADD_ALL_USERS':
+     // let users = action.payload;
+      //return {users: users};
 
     case 'ADD_USER':
       let newUsers = [...state.users, action.payload];

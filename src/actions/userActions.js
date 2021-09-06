@@ -1,40 +1,10 @@
-export function getAllUsers(){
-  return (dispatch, state, {getFirestore}) => {
-    const db = getFirestore();
-    db.collection('users')
-     .get()
-     .then((results) => { 
-       let users = [];
-       results.forEach((doc) => {
-         //console.log(doc.id, doc.data());
-         users.push(doc.data());
-       });
 
-     dispatch({
-       type: 'ADD_ALL_USERS',
-       payload: users,
-     });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-     
-  };
-}
-
-
-export function addUserAction(user) {
-    return (dispatch,state, {getFirestore}) =>{
-        const db = getFirestore();
-        db.collection('users')
-        .add(user)
-        .then(() => {
-          //send the data to the store
-          dispatch({
-            type: 'ADD_USER',
-            payload: user,
-          });
-        })
+export const addUserAction =(user) => {
+    return (dispatch, state, {getFirestore}) =>{
+         getFirestore()
+        .collection('users')
+        .add({...user, timestamp: getFirestore().FieldValue.serverTimestamp()})
+        .then((doc) => {})
         .catch ((err) => {
           console.log(err);
         });
