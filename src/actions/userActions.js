@@ -28,13 +28,23 @@ export const addUserAction =(user) => {
     //   payload: id,
     // };
   
-  
+   //updating data from firestore db and front-end
   export function updateUserAction(id, updatedUser) {
-    return {
-      type: 'UPDATE_USER',
-      payload: { id: id, updatedUserInfo: updatedUser },
+    return (dispatch, state, {getFirestore})=>{
+      getFirestore()
+      .collection("users")
+      .doc(id)
+      .set(updatedUser)
+      .then(()=>{})
+      .catch((err)=>{});
     };
-  }
+  };
+
+    // {
+    //   type: 'UPDATE_USER',
+    //   payload: { id: id, updatedUserInfo: updatedUser },
+    // };
+  
 
  // to get data from firebase db and display on UI
   // 1.create component didmount on apps
