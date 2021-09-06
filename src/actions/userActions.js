@@ -11,12 +11,23 @@ export const addUserAction =(user) => {
        };
   }
   
+  //deleting data from firestore db and front-end
   export function deleteUserAction(id) {
-    return {
-      type: 'DELETE_USER',
-      payload: id,
+    return (dispatch, state, {getFirestore})=>{
+      getFirestore()
+      .collection("users")
+      .doc(id)
+      .delete()
+      .then(() =>{})
     };
-  }
+  };
+
+
+    // {
+    //   type: 'DELETE_USER',
+    //   payload: id,
+    // };
+  
   
   export function updateUserAction(id, updatedUser) {
     return {
