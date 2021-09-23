@@ -20,8 +20,9 @@ function UserList(props) {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
-    users: state.users,
+    users: state.userState.users,
   };
 }
 
