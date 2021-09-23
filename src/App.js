@@ -1,8 +1,8 @@
 //import logo from './logo.svg';
 import React, {Component} from 'react';  
 import './App.css';
-import UserForm from './components/UserForm';
-import UserList from './components/UserList';
+//import UserForm from './components/UserForm';
+//import UserList from './components/UserList';
 import './components/form.css';
 import {getAllUsers} from './actions/userActions';
 import {connect} from 'react-redux';
