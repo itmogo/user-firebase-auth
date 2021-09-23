@@ -6,6 +6,11 @@ import UserList from './components/UserList';
 import './components/form.css';
 import {getAllUsers} from './actions/userActions';
 import {connect} from 'react-redux';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Dashboard from './pages/dashboard';
+import Login from './pages/login';
+import Signup from './pages/signup';
+
 
 export class App extends Component {
   // create component did mount to
@@ -24,6 +29,11 @@ export class App extends Component {
           backgroundSize: "cover"     
         }}>
         <div className="container">
+          <BrowserRouter>
+          <Route path="/" exact component={Dashboard}    />
+            <Route path="/login" component={Login} />
+            <route path="/signup" component={Signup} />
+          </BrowserRouter>
           <div className="row">
             <div className="col-md-5">
             <h4>Users Form</h4>
@@ -35,6 +45,7 @@ export class App extends Component {
               <UserList />
             </div>
           </div>
+          
         </div>
         </div>
     
