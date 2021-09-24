@@ -14,8 +14,6 @@ export function signup(email, password){
     };
 }
 
-
-
 export function login (email, password){
     return async (dispatch, state, {getFirebase}) =>{
         const firebase = getFirebase();
@@ -31,7 +29,6 @@ export function login (email, password){
         }
     };
 }
-
 
 export function logout() {
     return async (dispatch, state, { getFirebase }) => {
