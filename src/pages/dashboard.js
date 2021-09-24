@@ -2,9 +2,9 @@
 import { connect } from 'react-redux';
 import { logout } from '../actions/authActions';
  
-import './App.css';
-import UserForm from './components/UserForm';
-import UserList from './components/UserList';
+import '../App.css';
+import UserForm from '../components/UserForm';
+import UserList from '../components/UserList';
 
 
 
@@ -26,7 +26,7 @@ function Dashboard (props){
             <button
                 type="button"
                 style={{backgroundColor: 'red', color: 'white'}}
-                onClick = { handleLogut }            
+                onClick = { handleLogout }            
             >
                 Log Out
             </button>

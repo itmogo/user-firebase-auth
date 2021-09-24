@@ -26,7 +26,7 @@ function EditUserForm(props) {
   }
 
   //this function will be called the the create user button is clicked on
-  function handleOnSubmit() {
+  function handleSubmit() {
     //we call addUser function passed to this user form component
     //as a prop from the App component
 
@@ -91,7 +91,7 @@ function EditUserForm(props) {
         <br />
         <div>
           {/* the create user button call the handleSubmit functon when clicked */}
-          <Button type="button" variant="primary" onClick={handleOnSubmit}>
+          <Button type="button" variant="primary" onClick={handleSubmit}>
             Update User 
           </Button>
         </div>

@@ -26,8 +26,20 @@ export function login (email, password){
             .signInWithEmailAndPassword(email, password);
             console.log(userCredential)
         }
-        catch{e }{
+        catch(e){
             console.log(e)
+        }
+    };
+}
+
+
+export function logout() {
+    return async (dispatch, state, { getFirebase }) => {
+        const firebase = getFirebase();
+        try{
+            await firebase.auth().signOut();
+        } catch (e){
+            console.log(e);
         }
     };
 }

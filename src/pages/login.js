@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { login } from '../actions/authActions';
 import { connect } from "react-redux";
-import "./form.css";
+//import "./form.css";
 import { Redirect } from 'react-router-dom';
-import { Button, Form } from "react-bootstrap";
+//import { Button, Form } from "react-bootstrap";
 
 //user sign up component
 function Login(props) {
   // default user state is an object with empty string as value
   const [credentials, setCredentials] = useState({  
-    email: "",
-    password: "",    
+    email: '',
+    password: '',    
   });
+  console.log(props.auth);
 
   //a function that get called anytime an input field changes
   function handleOnChange(event) {
@@ -23,8 +24,8 @@ function Login(props) {
   }
 
   
-  function handleSubmit() {    
-    props.login(credentails.email, credentials.password);
+  function handleOnSubmit() {    
+    props.login(credentials.email, credentials.password);
   }
 
   //if firebase isloaded is false
@@ -40,40 +41,25 @@ function Login(props) {
   }
 
   return (
-    <div>
-      <form>
-        <div>
-         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Login</Form.Label>
-          <Form.Control 
-          type="email" 
-          name="email"
-          onChange={handleOnChange} //we setup onchange to call our handle onchange function
-          required />
-          </Form.Group>
+    <div style={{fontSize: 50}}>
+    <h1>Log In</h1>
+        <form>
+            <div>
+            <label> Email: </label>
+            <input  type="email"  name="email"  onChange={handleOnChange} />
+            </div>
+            <div>
+                <label>Password</label>
+                <input type="password" name="password" onChange={handleOnChange} />
+            </div>
 
-        </div>
-            
-
-        <Form.Group>
-          <Form.Label>Password</Form.Label>
-        
-          <Form.Control
-            type="password"
-            name="password"           
-            onChange={handleOnChange} //we setup onchange to call our handle onchange function
-           
-            required />
-        </Form.Group>
-        <br /><br />
-
-        <div>
-          {/* the create user button call the handleSubmit functon when clicked */}
-          <Button type="button" variant="primary" onClick={handleSubmit}>
-            <span>Log In</span>
-          </Button>
-        </div>
-      </form>
+            <div>
+                <button type="button" onClick={handleOnSubmit}>
+                 Log In
+                </button>
+            </div>
+        </form>
+    
     </div>
   );
 }

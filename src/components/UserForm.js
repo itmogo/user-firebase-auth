@@ -27,7 +27,7 @@ function UserForm(props) {
   }
 
   //this function will be called the the create user button is clicked on
-  function handleOnSubmit() {
+  function handleSubmit() {
     //we call addUser function passed to this user form component
     //as a prop from the App component
     let userId = 10000 + Math.random() * 10000000;
@@ -91,7 +91,7 @@ function UserForm(props) {
 
         <div>
           {/* the create user button call the handleSubmit functon when clicked */}
-          <Button type="button" variant="primary" onClick={handleOnSubmit}>
+          <Button type="button" variant="primary" onClick={handleSubmit}>
             <span>Create New User</span>
           </Button>
         </div>
