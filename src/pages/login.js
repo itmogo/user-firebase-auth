@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import {login} from '../actions/authActions';
+import { login } from '../actions/authActions';
 import { connect } from "react-redux";
 import "./form.css";
+import { Redirect } from 'react-router-dom';
 import { Button, Form } from "react-bootstrap";
 
 //user sign up component
@@ -14,23 +15,28 @@ function Login(props) {
 
   //a function that get called anytime an input field changes
   function handleOnChange(event) {
-    //event.target.name hold the name of the input that changed
-    //event.target.value hold the new value of the input field that changed
-
-    //we update the user state with the new value
+  
     setCredentials({
       ...credentials,
       [event.target.name]: event.target.value,
     });
   }
 
-  //this function will be called the the create user button is clicked on
-  function handleSubmit() {
-    //we call addUser function passed to this user form component
-    //as a prop from the App component
-   // let userId = 10000 + Math.random() * 10000000;
-   // let user = { ...state, id: userId };
+  
+  function handleSubmit() {    
     props.login(credentails.email, credentials.password);
+  }
+
+  //if firebase isloaded is false
+  //show loading
+  if(props.auth.isLoaded === false){
+      return <h1>Loading...</h1>
+  }
+
+  //if a user is logged in
+  //redirect them to dashboard
+  if (props.auth.isEmpty === false){
+      return <Redirect path="/"  />;
   }
 
   return (
@@ -47,11 +53,11 @@ function Login(props) {
           </Form.Group>
 
         </div>
-               <br />
+            
 
         <Form.Group>
           <Form.Label>Password</Form.Label>
-          <br />
+        
           <Form.Control
             type="password"
             name="password"           
@@ -73,4 +79,11 @@ function Login(props) {
 }
 
 const mapDispatchToProps = {login};
-export default connect(null, mapDispatchToProps)(Login);
+
+const mapStateToProps = (state) => {
+    return { 
+        auth: state.firebaseState.auth,
+    };    
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
