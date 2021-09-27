@@ -2,7 +2,7 @@ import "./App.css";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Login from './pages/Login';
 import Signup from "./pages/Signup";
 import Homepage from "./components/Homepage";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -10,6 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { getAllUsers} from './actions/userActions';
 import {connect} from 'react-redux';
 import React, {Component} from "react";
+import { loginAction } from "./actions/authActions";
 
 export class App extends Component {
   // create component did mount to
@@ -32,11 +33,10 @@ export class App extends Component {
         <div className="container">
           <BrowserRouter>
             <Switch>
-              <Route exact path='/' component = {Home} />
-              <Route exact path='/login' component = {Login} />
-              <Route exact path='/signup' component = {Signup} />              
-              <ProtectedRoute exact path ='/dashboard' component = {Homepage} />
-             
+              <Route exact path = '/' component = {Home} />             
+              <Route exact path = '/signup' component = {Signup} />   
+              <Route exact path = '/login' component = {Login} />           
+              <ProtectedRoute exact path ='/dashboard' component = {Homepage} />             
               </Switch>
           </BrowserRouter>
         </div>
@@ -46,17 +46,17 @@ export class App extends Component {
 
  
 }
-// const mapStateToProps = (state)=> ({
+const mapStateToProps = (state)=> ({
  
-//     users: state.users,
-//   });
+     users: state.users,
+   });
 
-const mapStateToProps = (state)=> {
-  console.log(state);
-  return {
-    users: state.userState.users,
-  };
-}
+// const mapStateToProps = (state)=> {
+//   console.log(state);
+//   return {
+//     users: state.userState.users,
+//   };
+// }
 
 
 //new add
@@ -65,6 +65,8 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
 
 
 
