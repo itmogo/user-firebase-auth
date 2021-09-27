@@ -9,7 +9,7 @@ export default class Home extends Component {
          backgroundImage: `url("mitchell.jpg")`, 
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",                  
+          backgroundSize: "cover"                 
 
         }}
       >

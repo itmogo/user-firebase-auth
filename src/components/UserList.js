@@ -8,13 +8,10 @@ import { getAllUsers } from '../actions/userActions';
 //this component displays all the users we have in our users state from App.js
 function UserList(props) {
 
-  
-
-
   //new add
   useEffect(() => {
     props.getAllUsers();
-  }, []);
+  }, );
   
   return (
     <div>

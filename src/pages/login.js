@@ -21,10 +21,7 @@ function Login(props) {
   
   function handleOnSubmit() {    
     props.loginAction(credentials.email, credentials.password);
-    setCredentials({
-      email: "",
-      password: ""
-    });
+    
   }
 
   //if firebase isloaded is false

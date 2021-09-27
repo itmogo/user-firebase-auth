@@ -10,7 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import { getAllUsers} from './actions/userActions';
 import {connect} from 'react-redux';
 import React, {Component} from "react";
-import { loginAction } from "./actions/authActions";
+
 
 export class App extends Component {
   // create component did mount to
