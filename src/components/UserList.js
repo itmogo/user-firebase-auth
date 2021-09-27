@@ -7,6 +7,10 @@ import { getAllUsers } from '../actions/userActions';
 
 //this component displays all the users we have in our users state from App.js
 function UserList(props) {
+
+  
+
+
   //new add
   useEffect(() => {
     props.getAllUsers();
@@ -25,7 +29,8 @@ function UserList(props) {
   );
 }
 
-function mapStateToProps(state) {
+
+const mapStateToProps = (state)=> {
   console.log(state);
   return {
     users: state.userState.users,
@@ -34,7 +39,7 @@ function mapStateToProps(state) {
 
 //new add
 const mapDispatchToProps = {
-  getAllUsers,
+  getAllUsers
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);

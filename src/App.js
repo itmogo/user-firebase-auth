@@ -1,32 +1,72 @@
+import "./App.css";
 
-import { BrowserRouter, Route } from 'react-router-dom';
-import Dashboard from './pages/dashboard';
-import Login from './pages/login';
-import Signup from './pages/signup';
-import ProtectedRoute from './components/ProtectedRoute';
-import Settings from './pages/Settings';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Homepage from "./components/Homepage";
+import ProtectedRoute from "./components/ProtectedRoute";
+//import Settings from "./pages/Settings";
+import { getAllUsers} from './actions/userActions';
+import {connect} from 'react-redux';
+import React, {Component} from "react";
 
-      function App(){
-      return (
-        <div style={{                 
+export class App extends Component {
+  // create component did mount to
+  // help display data on UI
+  componentDidMount(){
+    this.props.getAllUsers();
+  }
+ 
+  render(){
+    return (
+      <div
+        style={{
           backgroundImage: `url("mitchell.jpg")`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover"     
-        }}>
+          backgroundSize: "cover",
+        }}
+        >
+  
         <div className="container">
           <BrowserRouter>
-          <ProtectedRoute path="/" exact component={Dashboard} /> 
-            <Route path="/signup" component={Signup} />
-            <Route path="/login" component={Login} />
-            <ProtectedRoute path="/settings" component={Settings}/>
-          </BrowserRouter>          
+            <Switch>
+              <Route exact path='/' component = {Home} />
+              <Route exact path='/login' component = {Login} />
+              <Route exact path='/signup' component = {Signup} />              
+              <ProtectedRoute exact path ='/dashboard' component = {Homepage} />
+             
+              </Switch>
+          </BrowserRouter>
         </div>
-        </div>
-      );
-    }  
+      </div>
+    );
+  }
+
+ 
+}
+// const mapStateToProps = (state)=> ({
+ 
+//     users: state.users,
+//   });
+
+const mapStateToProps = (state)=> {
+  console.log(state);
+  return {
+    users: state.userState.users,
+  };
+}
 
 
-// create map state to props function
-// 
-export default App;
+//new add
+const mapDispatchToProps = {
+  getAllUsers,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+
+
+
+

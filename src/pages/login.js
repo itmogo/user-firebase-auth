@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 //import "./form.css";
 import { Redirect } from 'react-router-dom';
-import { login } from '../actions/authActions';
-//import { Button, Form } from "react-bootstrap";
+import { loginAction } from '../actions/authActions';
+import { Button, Form } from "react-bootstrap";
 
 //user sign up component
 function Login(props) {
@@ -20,7 +20,8 @@ function Login(props) {
   }
   
   function handleOnSubmit() {    
-    props.login(credentials.email, credentials.password);
+    props.loginAction(credentials.email, credentials.password);
+    
   }
 
   //if firebase isloaded is false
@@ -32,33 +33,48 @@ function Login(props) {
   //if a user is logged in
   //redirect them to dashboard
   if (props.auth.isEmpty === false){
-      return <Redirect path="/"  />;
+      return <Redirect to ="/dashboard"  />;
   }
 
   return (
-    <div style={{fontSize: 30}}>
-    <h1>Log In</h1>
-        <form>
+
+    <div className="container">
+      <div clasName="row">
+       <form>      
+         <Form.Group controlId="formBasicEmail">
+          <h3 className='text-center'>Log In</h3>           
+            <Form.Label> Email: </Form.Label>
+            <Form.Control  
+                type="email" 
+                name="email"  
+               // value={credentials.email}
+                onChange={handleOnChange} />
+                </Form.Group>
+          
             <div>
-            <label> Email: </label>
-            <input  type="email" name="email"  onChange={handleOnChange} />
+            <Form.Group controlId="formBasicEmail">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password" 
+                 // value={credentials.password}
+                  onChange={handleOnChange} />
+                  </Form.Group>
+                  <br />
+              <br />
             </div>
             <div>
-                <label>Password</label>
-                <input type="password" name="password" onChange={handleOnChange} />
-            </div>
-            <div>
-                <button type="button" onClick={handleOnSubmit}>
+                <Button type="button" variant="primary" onClick={handleOnSubmit}>
                  Log In
-                </button>
+                </Button>
             </div>
-        </form>
-    
+        </form>      
+      </div>
     </div>
   );
 }
 
-const mapDispatchToProps = {login};
+const mapDispatchToProps = {loginAction};
 
 const mapStateToProps = (state) => {
     return { 

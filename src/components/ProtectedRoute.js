@@ -1,18 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { connect} from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
-function ProtectedRoute ({component: Component, auth, ...otherProps }){
+function ProtectedRoute ({ component: Component, auth, ...otherProps }){
     return (
         <Route 
-        {...otherProps}
-        render={(props) => {
+          {...otherProps}
+          render={(props) => {
             if (auth.isLoaded === false){
                 return <h1>Loading...</h1>
-            } else if (auth.isLoaded === true && auth.isEmpy === false) {
+            } else if (auth.isLoaded === true && auth.isEmpty === false) {
                 return <Component {...props} />;
             } else {
-                return <Redirect to="login" />;
+                return <Redirect to="/" />;
             }
         }}
         />
@@ -25,4 +25,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {})(ProtectedRoute);
+export default connect(mapStateToProps, null)(ProtectedRoute);

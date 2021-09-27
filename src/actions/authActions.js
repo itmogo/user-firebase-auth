@@ -1,28 +1,30 @@
-export function signup(email, password){
+import {getFirebase } from 'react-redux-firebase';
+
+export function signupAction(email, password){
     return async (dispatch, state, {getFirebase})=>{
         const firebase =getFirebase();
 
         try{
-            const user = await firebase
+            const userCredentials = await firebase
             .auth()
             .createUserWithEmailAndPassword(email, password);
 
-            console.log(user);
+            console.log(userCredentials);
         } catch (error){
             console.log(error);
         }
     };
 }
 
-export function login (email, password){
+export function loginAction (email, password){
     return async (dispatch, state, {getFirebase}) =>{
         const firebase = getFirebase();
 
         try{
-            const userCredential = await firebase
+            const userCredentials = await firebase
             .auth()
             .signInWithEmailAndPassword(email, password);
-            console.log(userCredential)
+            console.log(userCredentials)
         }
         catch(e){
             console.log(e)
@@ -35,7 +37,8 @@ export function logout() {
         const firebase = getFirebase();
         try{
             await firebase.auth().signOut();
-        } catch (e){
+        } 
+        catch (e){
             console.log(e);
         }
     };
