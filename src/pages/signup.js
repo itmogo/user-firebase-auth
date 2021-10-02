@@ -39,7 +39,10 @@ function Signup(props) {
   //if a user is logged in
   // redirect them to dashboard
   if (props.auth.isEmpty === false) {
-    return <Redirect to="/dashboard" />;
+   // return <Redirect to="/dashboard" />;
+   return <Redirect psth="/" />;
+
+
   }
 
   return (
@@ -53,7 +56,7 @@ function Signup(props) {
               <Form.Control
                 type="email" 
                 name="email" 
-               value={credentials.email}
+              // value={credentials.email}
                 onChange={handleOnChange} />
                </Form.Group>
             </div>
@@ -64,7 +67,7 @@ function Signup(props) {
               <Form.Control
                 type="password"
                 name="password"
-                value={credentials.password}
+               // value={credentials.password}
                 onChange={handleOnChange}
               />
               </Form.Group>
