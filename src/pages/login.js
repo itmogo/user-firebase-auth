@@ -6,7 +6,7 @@ import { loginAction } from '../actions/authActions';
 import { Button, Form } from "react-bootstrap";
 
 //user sign up component
-function Login(props) {
+function Login(props){
   // default user state is an object with empty string as value
   const [credentials, setCredentials] = useState({  email: '', password: '' });
   console.log(props.auth);
