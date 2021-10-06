@@ -23,7 +23,7 @@ export class App extends Component {
     return (
       <div
         style={{
-          backgroundImage: `url("mitchell.jpg")`,
+          backgroundImage: `url("back1.jpg")`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

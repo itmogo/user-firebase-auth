@@ -6,10 +6,13 @@ export default class Home extends Component {
     return (
       <div
         style={{
-         backgroundImage: `url("mitchell.jpg")`, 
+         backgroundImage: `url("background.jpg")`, 
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "cover"                 
+          backgroundSize: "cover",
+          width:"100%",
+          height:"100%"
+
 
         }}
       >
